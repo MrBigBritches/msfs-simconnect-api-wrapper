@@ -26,7 +26,12 @@ import {
 import path from "node:path";
 import url from "node:url";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
-const AIRPORT_DB_LOCATION = path.join(__dirname, `..`, `airport.db.gz`);
+const DEFAULT_AIRPORT_DB_LOCATION = path.join(__dirname, `..`, `airport.db.gz`);
+
+let AIRPORT_DB_LOCATION = DEFAULT_AIRPORT_DB_LOCATION;
+export const setAirportDbLocation = (location = DEFAULT_AIRPORT_DB_LOCATION) => {
+  AIRPORT_DB_LOCATION = location;
+}
 
 export const AirportEvents = {
   AIRPORTS_IN_RANGE: {
